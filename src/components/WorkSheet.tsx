@@ -20,6 +20,7 @@ function WorkSheet({numCol, headings, onSelectCell}: Props) {
         onSelectCell(item);
     }
 
+    // Must find a way to uniquely identify each cell!
     return( 
         <>
             <table className="table">
@@ -30,11 +31,12 @@ function WorkSheet({numCol, headings, onSelectCell}: Props) {
                     <th>Intäkt</th>
                     <th>Utgift</th>
                 </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     {Array(numCells/numCol).fill(
                         <tr>
-                            {Array(numCol).fill(<td><input type="text"></input></td>)}
+                            
+                            {Array(numCol).fill(<td onClick={ (event) => handleClick(x, x, event)} ><input type="text"></input></td>)}
                         </tr>)}
                 </tbody>
             </table>
