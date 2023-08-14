@@ -10,7 +10,8 @@ function WorkSheet({numCol, headings, onSelectCell}: Props) {
 
     // Hooks
     const [selectedIndex, setSelectedIndex] = useState(-1);
-    const [numCells, setNumCells] = useState([]);
+    const [numCells, setNumCells] = useState(20);
+
 
     // Event handler
     const handleClick = (item:string, index:number, event: MouseEvent) => {
@@ -31,11 +32,10 @@ function WorkSheet({numCol, headings, onSelectCell}: Props) {
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {numCells.map(() =>
-                            <td><input type="text"></input></td>
-                        )}
-                    </tr>
+                    {Array(numCells/numCol).fill(
+                        <tr>
+                            {Array(numCol).fill(<td><input type="text"></input></td>)}
+                        </tr>)}
                 </tbody>
             </table>
         </>
